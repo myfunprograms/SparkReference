@@ -137,7 +137,7 @@ object JoinType extends LazyLogging {
       .show()
 
     logger.info("Method joinWithDupColumnName with dup columns: approach 2...")
-    personDF.join(graduateDupDF, "graduate_program")
+    personDF.join(graduateDupDF, joinExp)
       .drop(graduateDupDF("graduate_program"))
       .show()
   }
