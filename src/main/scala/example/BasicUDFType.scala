@@ -29,7 +29,8 @@ object BasicUDFType extends LazyLogging {
     logger.info("Method power3DF ...")
 
     def power3(number: Double): Double = Math.pow(number, 3)
-    df.select(power3UDFFn()(col("num"))).show()
+    val power3udf = udf(power3(_:Double):Double)
+    df.select(power3udf(col("num"))).show()
   }
 
   private def power3DFFunc(session: SparkSession, df: DataFrame) = {
